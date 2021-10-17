@@ -1,0 +1,17 @@
+{
+  "name": "abnamro-ynab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mt940-js": "^1.0.0",
+    "tslib": "^2.3.1",
+    "yargs": "^17.2.1",
+    "ynab": "^1.25.0"
+  }
+}
