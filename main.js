@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mt940 = require('mt940-js')
 const fs = require('fs')
 
@@ -29,12 +30,13 @@ const readMt = async (filepath, date) => {
     const content = fs.readFileSync(filepath)
     const statements = await mt940.read(content)
 
+    const transactions = statements.flatMap(s => s.transactions)
+
     const filtered = !!date
-        ? statements.filter(s => s.closingBalance.date === date)
-        : statements
+        ? transactions.filter(s => s.valueDate === date)
+        : transactions
 
     return filtered
-        .flatMap( s => s.transactions ) 
 }
 
 function mapTransactionsFromMtToYnab(accountId, transactions) {
